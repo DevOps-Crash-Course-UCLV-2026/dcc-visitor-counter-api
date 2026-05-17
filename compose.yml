@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    network_mode: host
+    depends_on:
+      - redis
+  redis:
+    image: docker.uclv.cu/redis:alpine
+    network_mode: host
+    volumes:
+      - redis-data:/data
+volumes:
+  redis-data: 

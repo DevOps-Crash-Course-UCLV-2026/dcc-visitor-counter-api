@@ -3,7 +3,7 @@ import os
 from flask import Flask
 
 app = Flask(__name__)
-redis = redis.Redis(host='redis', port=6379, db=0)
+redis = redis.Redis(host='localhost', port=6379, db=0)
 
 @app.route('/')
 def hello_world():
