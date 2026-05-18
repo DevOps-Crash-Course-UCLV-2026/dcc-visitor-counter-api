@@ -69,7 +69,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/visitor-api-jander:latest .
+          docker build -t ghcr.io/${{ github.repository_owner }}/visitor-api-jander:latest jeizquierdo-config/
 
       - name: Push Docker image
         run: |
