@@ -4,9 +4,11 @@ from flask import Flask
 app = Flask(__name__)
 redis = redis.Redis(host='redis', port=6379, db=0)
 
+
 @app.route('/')
 def hello_world():
     return 'Welcome to DevOps Crash Course 2026'
+
 
 @app.route('/visitor')
 def visitor():
