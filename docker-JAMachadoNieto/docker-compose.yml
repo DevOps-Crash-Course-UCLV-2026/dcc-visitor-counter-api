@@ -1,0 +1,32 @@
+services:
+  web:
+    build: .
+    container_name: visitor-counter-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+    depends_on:
+      redis:
+        condition: service_started
+    volumes:
+      - ./main.py:/app/main.py
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: visitor-counter-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+networks:
+  app-network:
+    driver: bridge
